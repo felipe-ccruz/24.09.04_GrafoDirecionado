@@ -1,12 +1,12 @@
-## Graph Project
-#  Description (Descrição)
+# Graph Project
+##  Description (Descrição)
 English:
 This project is an implementation of a graph in Java. It includes functionalities such as generating vertices and edges, connecting them, and performing basic graph analysis like detecting loops, parallel edges, and isolated vertices. The project also provides methods for printing adjacency and edge lists.
 
 Português:
 Este projeto é uma implementação de um grafo em Java. Ele inclui funcionalidades como gerar vértices e arestas, conectá-los e realizar análises básicas de grafos, como detectar laços, arestas paralelas e vértices isolados. O projeto também oferece métodos para exibir listas de adjacência e arestas.
 
-# Features (Funcionalidades)
+## Features (Funcionalidades)
 - Vertex and Edge generation
     Geração de Vértices e Arestas
 - Matrix-based connection management
@@ -18,24 +18,24 @@ Este projeto é uma implementação de um grafo em Java. Ele inclui funcionalida
 - Adjacency and edge lists printing
     Exibição de listas de adjacência e de arestas
 
-# Installation (Instalação)
+## Installation (Instalação)
 English:
-Clone this repository:
-git clone https://github.com/username/graph-project.git
-Compile the Java files:
-javac App.java
-Run the application:
-java App
+1. Clone this repository:
+2. git clone https://github.com/username/graph-project.git
+3. Compile the Java files:
+4. javac App.java
+5. Run the application:
+6. java App
 
 Português:
-Clone o repositório:
-git clone https://github.com/username/graph-project.git
-Compile os arquivos Java:
-javac App.java
-Execute a aplicação:
-java App
+1. Clone o repositório:
+2. git clone https://github.com/username/graph-project.git
+3. Compile os arquivos Java:
+4.javac App.java
+5. Execute a aplicação:
+6. java App
 
-# Usage (Uso)
+## Usage (Uso)
 English:
 Generate vertices using the vertexGenerator method.
 Generate edges with the edgeGenerator method.
