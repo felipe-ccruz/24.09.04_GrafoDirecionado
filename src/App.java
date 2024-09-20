@@ -1,7 +1,7 @@
 public class App {
     public static void main(String[] args) throws Exception {
          // Criando um grafo com 4 vértices
-         Graph graph = new Graph(7);
+         Graph graph = new Graph(3);
 
          // Conectando os vértices conforme a especificação (índices baseados em 1)
         // graph.connect(3, 3);
@@ -34,7 +34,14 @@ public class App {
         // Imprime a conexão de todos os vértices
         graph.printVertexConnections();
 
+        // Imprime a conexão de todas as arestas
+        graph.printEdgeConnections();
+
+
         // Lista de Adjacência
         graph.adjacencyList();
+
+        // Lista de arestas
+        graph.edgeList();
     }
 }

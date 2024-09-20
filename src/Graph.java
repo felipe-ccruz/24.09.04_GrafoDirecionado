@@ -9,7 +9,18 @@ public class Graph {
         createConnectMat();
     }
 
+    //ELEMENTS
     ArrayList<Vertex> vertices = new ArrayList<>();
+    ArrayList<Edge> edges = new ArrayList<>();
+
+
+    //GENERATOR
+    public void edgeGenerator(int numEdges) {
+        for (int i = 0; i < numEdges; i++){
+            Edge e = new Edge("e" + (i + 1));
+            edges.add(e);
+        }
+    }
 
     public void vertexGenerator(int numVertices){
         for (int i = 0; i < numVertices; i++){
@@ -18,6 +29,8 @@ public class Graph {
         }
     }
 
+    
+    //MATRIX
     public void createConnectMat(){
         for (int i = 0; i < vertices.size(); i++){
             for(int j = 0; j < vertices.size(); j++){
@@ -46,16 +59,35 @@ public class Graph {
         }
     }
 
-    public void connect(int source, int target){
+
+    //CONNECTION
+    public void connect(Edge edge, int source, int target){
         Vertex tempSource = getVertices().get(source - 1);
         Vertex tempTarget = getVertices().get(target - 1);
 
         tempSource.addLeavingVertex(tempTarget);
         tempTarget.addEnteringVertex(tempSource);
 
+        edge.setSource(tempSource);
+        edge.setTarget(tempTarget);
+
         connections[vertices.indexOf(tempSource)][vertices.indexOf(tempTarget)] = connections[vertices.indexOf(tempSource)][vertices.indexOf(tempTarget)] + 1;
     }
 
+    public void printVertexConnections(){
+        for(Vertex v : vertices){
+            v.printStatus();
+        }
+    }
+
+    public void printEdgeConnections(){
+        for(Edge e : edges){
+            e.printStatus();
+        }
+    }
+
+
+    //"IS" FUCTIONS
     public void isLooping(){
         System.out.println("\n----------------LOOP--------------");
         for(int i = 0; i < vertices.size(); i++){
@@ -88,14 +120,10 @@ public class Graph {
         }
     }
 
-    public void printVertexConnections(){
-        for(Vertex v : vertices){
-            v.printStatus();
-        }
-    }
 
+    //LISTS FUNCTION
     public void adjacencyList(){
-        System.out.println(" Vertex  |   adjacency list ");
+        System.out.println("\n\n Vertex  |   adjacency list ");
 
         for(int i = 0; i < vertices.size(); i++){
             
@@ -109,24 +137,53 @@ public class Graph {
             System.out.println();
 
         }
-
     }
 
+    public void edgeList(){
+        System.out.println("\n\n Vertex  |    edge list ");
+
+        for(int i = 0; i < vertices.size(); i++){
+
+            Vertex tempVertex = vertices.get(i);
+            
+
+            System.out.print("   " + tempVertex.getName() + "    |  ");
+
+            System.out.print(ANSI_CYAN);
+            for(Edge edge : edges){
+                if(edge.getSource().equals(tempVertex)){
+                    edge.printInfo();
+                }
+            }
+            System.out.print(ANSI_RESET + "\n");
+        }
+    }
+
+
+    //AUTOMATIC
     public void automatic(){
         Random random = new Random();
 
-        int connection = random.nextInt(vertices.size() * vertices.size());
-        for(int i = 0; i < connection; i++){
+        int numConnections = random.nextInt(vertices.size() * vertices.size());
+
+        edgeGenerator(numConnections);
+
+        for(int i = 0; i < numConnections; i++){
             int source = random.nextInt(vertices.size()) + 1;
             int target = random.nextInt(vertices.size()) + 1;
 
-            connect(source, target);
+            Edge tempEdge = edges.get(i);
+
+            connect(tempEdge, source, target);
         }
     }
     
 
     public ArrayList<Vertex> getVertices() {
         return vertices;
+    }
+    public ArrayList<Edge> getEdges() {
+        return edges;
     }
  
 
